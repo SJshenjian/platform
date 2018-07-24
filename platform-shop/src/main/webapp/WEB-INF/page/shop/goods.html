@@ -68,8 +68,8 @@
                 #end
                 <i-button type="primary" @click="enSale"><i class="fa fa-hand-o-up"></i>&nbsp;上架</i-button>
                 <i-button type="dashed" @click="unSale"><i class="fa fa-hand-o-down"></i>&nbsp;下架</i-button>
-                <i-button type="warning" @click="openPro"><i class="fa fa-pencil-square-o"></i>&nbsp;产品</i-button>
-                <i-button type="warning" @click="openSpe"><i class="fa fa-pencil-square-o"></i>&nbsp;规格</i-button>
+               <!-- <i-button type="warning" @click="openPro"><i class="fa fa-pencil-square-o"></i>&nbsp;产品</i-button>
+                <i-button type="warning" @click="openSpe"><i class="fa fa-pencil-square-o"></i>&nbsp;规格</i-button>-->
             </div>
         </Row>
         <table id="jqGrid"></table>
@@ -92,7 +92,7 @@
                     <Form-item label="名称" prop="name">
                         <i-input v-model="goods.name" placeholder="名称"/>
                     </Form-item>
-                    <Form-item label="品牌" prop="brandId" style="width: 268px;">
+                    <!--<Form-item label="品牌" prop="brandId" style="width: 268px;">
                         <i-select v-model="goods.brandId" filterable>
                             <i-option v-for="brand in brands" :value="brand.id" :key="brand.id">{{brand.name}}
                             </i-option>
@@ -104,7 +104,7 @@
                                       :key="attributeCategory.id">{{attributeCategory.name}}
                             </i-option>
                         </i-select>
-                    </Form-item>
+                    </Form-item>-->
                     <Form-item label="商品库存" prop="goodsNumber">
                         <Input-number :min="0" :step="1" v-model="goods.goodsNumber" placeholder="商品库存"
                                       style="width: 188px;"/>
@@ -270,7 +270,7 @@
                 </i-form>
             </Tab-Pane>
         </Tabs>
-        <div style="padding-left: 20px; margin-bottom: 30px">
+        <div style="padding-left: 20px; margin-bottom: auto">
             <i-button type="primary" @click="handleSubmit('formValidate')">提交</i-button>
             <i-button type="warning" @click="reload" style="margin-left: 8px"/>
             返回</i-button>

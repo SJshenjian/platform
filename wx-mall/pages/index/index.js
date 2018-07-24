@@ -16,8 +16,8 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'NideShop',
-      desc: '好途严选微信小程序商城',
+      title: 'wgxShop',
+      desc: '微果鲜购新鲜商城',
       path: '/pages/index/index'
     }
   },onPullDownRefresh(){
