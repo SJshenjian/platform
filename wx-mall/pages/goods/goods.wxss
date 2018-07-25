@@ -601,7 +601,7 @@
 
 .attr-pop .img-info{
     width: 687.5rpx;
-    height: 177rpx;
+    height: 187rpx;
     overflow: hidden;
     margin-bottom: 41.5rpx;
 }
@@ -643,7 +643,7 @@
 }
 
 .spec-con .name{
-    height: 32rpx;
+    height: 42rpx;
     margin-bottom: 22rpx;
     font-size: 29rpx;
     color: #333;

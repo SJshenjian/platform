@@ -29,7 +29,7 @@
     <select id="queryList" resultMap="cartMap">
         select a.*,
         b.list_pic_url as list_pic_url,
-        c.retail_price as retail_product_price
+        b.retail_price as retail_product_price
         from nideshop_cart a
         left join nideshop_goods b on a.goods_id = b.id
         left join nideshop_product c on c.goods_id = a.goods_id and c.id = a.product_id
