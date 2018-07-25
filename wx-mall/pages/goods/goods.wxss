@@ -627,6 +627,7 @@
     height: 33rpx;
     line-height: 33rpx;
     margin-bottom: 10rpx;
+    overflow-y: hidden;
 }
 
 .attr-pop .a{
