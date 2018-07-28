@@ -91,6 +91,12 @@ Page({
                 if (res.confirm) {
                     wx.removeStorageSync('token');
                     wx.removeStorageSync('userInfo');
+                    // 解决退出登录头像显示问题
+                    app.globalData.userInfo = {
+                      nickName: 'Hi,游客',
+                      userName: '点击去登录',
+                      avatarUrl: 'http://p9kyr79ne.bkt.clouddn.com/1/20180531/150547696d798c.png'
+                    };
                     wx.switchTab({
                         url: '/pages/index/index'
                     });
