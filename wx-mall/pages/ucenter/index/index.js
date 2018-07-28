@@ -10,13 +10,12 @@ Page({
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
-        console.log(app.globalData)
+        console.log(app.globalData);
     },
     onReady: function () {
 
     },
     onShow: function () {
-
         let userInfo = wx.getStorageSync('userInfo');
         let token = wx.getStorageSync('token');
 
@@ -24,6 +23,12 @@ Page({
         if (userInfo && token) {
             app.globalData.userInfo = userInfo;
             app.globalData.token = token;
+        }  else {
+            app.globalData.userInfo = {
+              nickName: 'Hi,游客',
+              userName: '点击去登录',
+              avatarUrl: 'http://p9kyr79ne.bkt.clouddn.com/1/20180531/150547696d798c.png'
+            };
         }
 
         this.setData({
@@ -91,12 +96,6 @@ Page({
                 if (res.confirm) {
                     wx.removeStorageSync('token');
                     wx.removeStorageSync('userInfo');
-                    // 解决退出登录头像显示问题
-                    app.globalData.userInfo = {
-                      nickName: 'Hi,游客',
-                      userName: '点击去登录',
-                      avatarUrl: 'http://p9kyr79ne.bkt.clouddn.com/1/20180531/150547696d798c.png'
-                    };
                     wx.switchTab({
                         url: '/pages/index/index'
                     });

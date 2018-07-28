@@ -42,6 +42,8 @@ function request(url, data = {}, method = "GET") {
                 title: '',
                 content: '请先登录',
                 success: function (res){
+                    wx.removeStorageSync('token');
+                    wx.removeStorageSync('userInfo');
                     if (res.confirm) {
                         wx.switchTab({
                             url: '/pages/ucenter/index/index'
