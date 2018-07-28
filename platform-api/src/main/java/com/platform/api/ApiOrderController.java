@@ -126,7 +126,7 @@ public class ApiOrderController extends ApiBaseAction {
     }
 
     @ApiOperation(value = "修改订单")
-    @PostMapping("updateSuccess")
+    @GetMapping("updateSuccess")
     public Object updateSuccess(Integer orderId) {
         OrderVo orderInfo = orderService.queryObject(orderId);
         if (orderInfo == null) {
@@ -170,7 +170,7 @@ public class ApiOrderController extends ApiBaseAction {
      * 获取订单列表
      */
     @ApiOperation(value = "取消订单")
-    @PostMapping("cancelOrder")
+    @GetMapping("cancelOrder")
     public Object cancelOrder(Integer orderId) {
         try {
             OrderVo orderVo = orderService.queryObject(orderId);
@@ -190,14 +190,14 @@ public class ApiOrderController extends ApiBaseAction {
                         orderVo.setOrder_status(402);
                     }
                     orderVo.setPay_status(4);
-                    orderService.update(orderVo);
+                    orderService.delete(orderId);
                     return toResponsMsgSuccess("取消成功");
                 } else {
-                    return toResponsObject(400, "取消成失败", "");
+                    return toResponsObject(400, "取消失败", "");
                 }
             } else {
                 orderVo.setOrder_status(101);
-                orderService.update(orderVo);
+                orderService.delete(orderId);
                 return toResponsSuccess("取消成功");
             }
         } catch (Exception e) {
@@ -210,7 +210,7 @@ public class ApiOrderController extends ApiBaseAction {
      * 确认收货
      */
     @ApiOperation(value = "确认收货")
-    @PostMapping("confirmOrder")
+    @GetMapping("confirmOrder")
     public Object confirmOrder(Integer orderId) {
         try {
             OrderVo orderVo = orderService.queryObject(orderId);

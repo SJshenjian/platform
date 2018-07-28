@@ -92,14 +92,11 @@ Page({
       return false;
     }
     
-    console.log('可以取消订单的情况');
     wx.showModal({
       title: '',
       content: '确定要取消此订单？',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定');
-
           util.request(api.OrderCancel,{
             orderId: orderInfo.id
           }).then(function (res) {
@@ -112,10 +109,7 @@ Page({
                 showCancel:false,
                 confirmText:'继续',
                 success: function (res) {
-                //  util.redirect('/pages/ucenter/order/order');
-                  wx.navigateBack({
-                    url: 'pages/ucenter/order/order',
-                  });
+                  util.redirect('/pages/ucenter/order/order');
                 }
               });
             }
