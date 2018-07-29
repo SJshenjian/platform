@@ -10,7 +10,6 @@ const api = require('../config/api.js');
  * 调用微信登录
  */
 function loginByWeixin(userInfo) {
-
   let code = null;
   return new Promise(function (resolve, reject) {
     return util.login().then((res) => {

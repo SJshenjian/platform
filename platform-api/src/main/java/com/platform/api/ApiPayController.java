@@ -61,7 +61,7 @@ public class ApiPayController extends ApiBaseAction {
             return toResponsObject(400, "订单已取消", "");
         }
 
-        if (orderInfo.getPay_status() != 0) {
+        if (2 == orderInfo.getPay_status()) {
             return toResponsObject(400, "订单已支付，请不要重复操作", "");
         }
 
@@ -83,11 +83,11 @@ public class ApiPayController extends ApiBaseAction {
             Map orderGoodsParam = new HashMap();
             orderGoodsParam.put("order_id", orderId);
             // 商品描述
-            parame.put("body", "超市-支付");
+            parame.put("body", "支付");
             //订单的商品
             List<OrderGoodsVo> orderGoods = orderGoodsService.queryList(orderGoodsParam);
             if (null != orderGoods) {
-                String body = "超市-";
+                String body = "";
                 for (OrderGoodsVo goodsVo : orderGoods) {
                     body = body + goodsVo.getGoods_name() + "、";
                 }

@@ -57,9 +57,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int confirm(Integer id) {
-        OrderEntity orderEntity = queryObject(id);
-        Integer shippingStatus = orderEntity.getShippingStatus();//发货状态
-        Integer payStatus = orderEntity.getPayStatus();//付款状态
+        OrderEntity order = queryObject(id);
+        Integer shippingStatus = order.getShippingStatus();//发货状态
+        Integer payStatus = order.getPayStatus();//付款状态
         if (2 != payStatus) {
             throw new RRException("此订单未付款，不能确认收货！");
         }
@@ -69,8 +69,9 @@ public class OrderServiceImpl implements OrderService {
         if (0 == shippingStatus) {
             throw new RRException("此订单未发货，不能确认收货！");
         }
-        orderEntity.setShippingStatus(2);
-        return 0;
+        order.setOrderStatus(301);//订单已收货
+        order.setShippingStatus(2);//已收货
+        return orderDao.update(order);
     }
 
     @Override
