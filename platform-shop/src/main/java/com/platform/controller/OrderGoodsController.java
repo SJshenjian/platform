@@ -1,21 +1,20 @@
 package com.platform.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.platform.entity.OrderGoodsEntity;
 import com.platform.service.OrderGoodsService;
 import com.platform.utils.PageUtils;
 import com.platform.utils.Query;
 import com.platform.utils.R;
+
+import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -98,9 +97,17 @@ public class OrderGoodsController {
 	 */
 	@RequestMapping("/queryAll")
 	public R queryAll(@RequestParam Map<String, Object> params) {
-
 		List<OrderGoodsEntity> list = orderGoodsService.queryList(params);
 
 		return R.ok().put("list", list);
+	}
+
+	/**
+	 *  查询某一日各品种订单总量 Jian Shen 20180801
+	 */
+	@RequestMapping("/exportByVariety")
+	@GetMapping
+	public void exportByVariety(HttpServletResponse response, @RequestParam String orderDate) {
+		orderGoodsService.exportByVariety(orderDate, response);
 	}
 }

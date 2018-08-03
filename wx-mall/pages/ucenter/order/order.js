@@ -55,7 +55,6 @@ Page({
     });
   },
   payOrder(){
-    let that = this;
     wx.redirectTo({
       url: '/pages/pay/pay',
     })

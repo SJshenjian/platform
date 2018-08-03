@@ -3,7 +3,7 @@
 
 <mapper namespace="com.platform.dao.OrderGoodsDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.platform.entity.OrderGoodsEntity" id="orderGoodsMap">
         <result property="id" column="id"/>
         <result property="orderId" column="order_id"/>
@@ -20,38 +20,48 @@
         <result property="listPicUrl" column="list_pic_url"/>
     </resultMap>
 
-	<select id="queryObject" resultType="com.platform.entity.OrderGoodsEntity">
+    <select id="queryObject" resultType="com.platform.entity.OrderGoodsEntity">
 		select * from nideshop_order_goods where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.platform.entity.OrderGoodsEntity">
-		select * from nideshop_order_goods
-		WHERE 1=1
-		<if test="orderId != null and orderId != ''">
-			AND order_id = #{orderId}
-		</if>
+    <select id="queryList" resultType="com.platform.entity.OrderGoodsEntity">
+        select * from nideshop_order_goods
+        WHERE 1=1
+        <if test="orderId != null and orderId != ''">
+            AND order_id = #{orderId}
+        </if>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
                 order by ${sidx} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by id desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="queryTotal" resultType="int">
-		select count(*) from nideshop_order_goods
-		WHERE 1=1
-		<if test="orderId != null and orderId != ''">
-			AND order_id = #{orderId}
-		</if>
-	</select>
-	 
-	<insert id="save" parameterType="com.platform.entity.OrderGoodsEntity" useGeneratedKeys="true" keyProperty="id">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from nideshop_order_goods
+        WHERE 1=1
+        <if test="orderId != null and orderId != ''">
+            AND order_id = #{orderId}
+        </if>
+    </select>
+
+    <select id="listByVariety" resultType="com.platform.entity.OrderGoodsEntity">
+        SELECT
+            goods_name, SUM(number) AS number
+        FROM
+            nideshop_order_goods
+        WHERE
+            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE '${date}%' )
+        GROUP BY goods_name;
+    </select>
+
+    <insert id="save" parameterType="com.platform.entity.OrderGoodsEntity" useGeneratedKeys="true" keyProperty="id">
 		insert into nideshop_order_goods
 		(
 			`order_id`, 
@@ -83,35 +93,37 @@
 			#{listPicUrl}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.platform.entity.OrderGoodsEntity">
-		update nideshop_order_goods 
-		<set>
-			<if test="orderId != null">`order_id` = #{orderId}, </if>
-			<if test="goodsId != null">`goods_id` = #{goodsId}, </if>
-			<if test="goodsName != null">`goods_name` = #{goodsName}, </if>
-			<if test="goodsSn != null">`goods_sn` = #{goodsSn}, </if>
-			<if test="productId != null">`product_id` = #{productId}, </if>
-			<if test="number != null">`number` = #{number}, </if>
-			<if test="marketPrice != null">`market_price` = #{marketPrice}, </if>
-			<if test="retailPrice != null">`retail_price` = #{retailPrice}, </if>
-			<if test="goodsSpecifitionNameValue != null">`goods_specifition_name_value` = #{goodsSpecifitionNameValue}, </if>
-			<if test="isReal != null">`is_real` = #{isReal}, </if>
-			<if test="goodsSpecifitionIds != null">`goods_specifition_ids` = #{goodsSpecifitionIds}, </if>
-			<if test="listPicUrl != null">`list_pic_url` = #{listPicUrl}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="delete">
+
+    <update id="update" parameterType="com.platform.entity.OrderGoodsEntity">
+        update nideshop_order_goods
+        <set>
+            <if test="orderId != null">`order_id` = #{orderId},</if>
+            <if test="goodsId != null">`goods_id` = #{goodsId},</if>
+            <if test="goodsName != null">`goods_name` = #{goodsName},</if>
+            <if test="goodsSn != null">`goods_sn` = #{goodsSn},</if>
+            <if test="productId != null">`product_id` = #{productId},</if>
+            <if test="number != null">`number` = #{number},</if>
+            <if test="marketPrice != null">`market_price` = #{marketPrice},</if>
+            <if test="retailPrice != null">`retail_price` = #{retailPrice},</if>
+            <if test="goodsSpecifitionNameValue != null">`goods_specifition_name_value` =
+                #{goodsSpecifitionNameValue},
+            </if>
+            <if test="isReal != null">`is_real` = #{isReal},</if>
+            <if test="goodsSpecifitionIds != null">`goods_specifition_ids` = #{goodsSpecifitionIds},</if>
+            <if test="listPicUrl != null">`list_pic_url` = #{listPicUrl}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
 		delete from nideshop_order_goods where id = #{value}
 	</delete>
-	
-	<delete id="deleteBatch">
-		delete from nideshop_order_goods where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="deleteBatch">
+        delete from nideshop_order_goods where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

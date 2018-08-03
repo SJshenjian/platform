@@ -105,34 +105,13 @@ public class ExcelExport {
      * @param response HttpServletResponse
      */
     public void export(HttpServletResponse response) {
-
-        // response.setHeader("Content-Disposition","attachment;filename=totalExcel.xls");
-        response.reset();
-        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8");
-        // response.setContentType("text/html;charset=UTF-8");
-        // response.setContentType("APPLICATION/*");
-        String fileName = null;
-
-        // 处理编码
         try {
-
-            //modify by ld 2017年4月10日19:04:37 根据浏览器编码文件名
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-            String userAgent = request.getHeader("User-Agent");
-            //针对IE或者以IE为内核的浏览器：
-            if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
-                fileName = URLEncoder.encode(exportFileName, "UTF-8");
-            } else {
-                //非IE浏览器的处理：
-                fileName = new String(exportFileName.getBytes("UTF-8"), "ISO-8859-1");
-            }
+            response.setContentType("application/x-msdownload");
+            response.setHeader("Content-Disposition", "attachment;filename="
+                    + URLEncoder.encode(exportFileName, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
-
-            fileName = "export.xls";
+            e.printStackTrace();
         }
-
-        response.setHeader("Content-Disposition", "attachment;filename="
-                + fileName);
 
         ServletOutputStream output;
 
