@@ -61,6 +61,30 @@
         GROUP BY goods_name;
     </select>
 
+    <select id="listByNetwork" resultType="com.platform.entity.OrderGoodsEntity">
+        SELECT
+            goods_name,
+            SUM( number ) AS number, retail_price * SUM( number ) AS retail_price, retail_price * SUM( number )/10 AS market_price
+        FROM
+            nideshop_order_goods
+        WHERE
+            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE '${date}%' AND address ='${address}')
+        GROUP BY
+            goods_name
+    </select>
+
+    <select id="listNetworkByOrderDate" resultType="java.lang.String">
+        SELECT
+            address
+        FROM
+            nideshop_order
+        WHERE
+            pay_status = '2'
+            AND pay_time LIKE '${date}%'
+        GROUP BY
+            address
+    </select>
+
     <insert id="save" parameterType="com.platform.entity.OrderGoodsEntity" useGeneratedKeys="true" keyProperty="id">
 		insert into nideshop_order_goods
 		(

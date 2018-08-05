@@ -103,11 +103,20 @@ public class OrderGoodsController {
 	}
 
 	/**
-	 *  查询某一日各品种订单总量 Jian Shen 20180801
+	 * 打印某一日各品种订单总量 Jian Shen 20180801
 	 */
 	@RequestMapping("/exportByVariety")
 	@GetMapping
-	public void exportByVariety(HttpServletResponse response, @RequestParam String orderDate) {
+	public void exportByVariety(@RequestParam String orderDate, HttpServletResponse response) {
 		orderGoodsService.exportByVariety(orderDate, response);
+	}
+
+	/**
+	 * 打印某一日各网点各品种订单总量 Jian Shen 20180804
+	 */
+	@RequestMapping("/exportByNetwork")
+	@GetMapping
+	public void exportByNetwork(@RequestParam String orderDate, HttpServletResponse response) {
+		orderGoodsService.listNetworkByOrderDate(orderDate, response);
 	}
 }

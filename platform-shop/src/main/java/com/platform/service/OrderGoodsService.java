@@ -29,4 +29,6 @@ public interface OrderGoodsService {
     void deleteBatch(Integer[] ids);
 
     void exportByVariety(String date, HttpServletResponse response);
+
+    void listNetworkByOrderDate(String orderDate, HttpServletResponse response);
 }

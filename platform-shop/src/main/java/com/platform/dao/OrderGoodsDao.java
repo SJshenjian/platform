@@ -12,5 +12,12 @@ import java.util.List;
  */
 public interface OrderGoodsDao extends BaseDao<OrderGoodsEntity> {
 
+    // 查询所有网点的品种订单量
     List<OrderGoodsEntity> listByVariety(@Param("date") String date);
+
+    // 查询网点订单品种信息
+    List<OrderGoodsEntity> listByNetwork(@Param("date") String date, @Param("address") String address);
+
+    // 查询今日存在订单的网点信息
+    List<String> listNetworkByOrderDate(@Param("date") String date);
 }
