@@ -1,5 +1,5 @@
-//var NewApiRootUrl = 'https://www.mingquanrenjia.com/platform-framework/api/';
-var NewApiRootUrl = 'http://localhost/api/';
+var NewApiRootUrl = 'https://www.mingquanrenjia.com/platform-framework/api/';
+//var NewApiRootUrl = 'http://localhost/api/';
 module.exports = {
   IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
   IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口

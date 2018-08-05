@@ -8,28 +8,27 @@
       </navigator>
     </swiper-item>
   </swiper>
- 
-  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
+
+  <view class="a-section a-popular" wx:if="{{hotGoods.length > 0}}">
     <view class="h">
       <view>
-        <text>{{item.name}}</text>
+        <navigator url="../hotGoods/hotGoods">
+          <text class="txt">人气推荐</text>
+        </navigator>
       </view>
     </view>
     <view class="b">
-      <block wx:for="{{item.goodsList}}" wx:for-index="iindex" wx:for-item="iitem" wx:key="{{iitem.id}}">
-        <view class="item {{iindex % 2 == 0 ? '' : 'item-b'}}">
-          <navigator url="../goods/goods?id={{iitem.id}}" class="a">
-            <image class="img" src="{{iitem.list_pic_url}}" background-size="cover"></image>
-            <text class="name">{{iitem.name}}</text>
-            <text class="price">￥{{iitem.retail_price}}</text>
-          </navigator>
-        </view>
-      </block>
-      <view class="item item-b item-more">
-          <navigator url="/pages/category/category?id={{item.id}}" class="more-a">
-            <view class="txt">{{'更多'+item.name+'好物'}}</view>
-            <image class="icon" src="../../static/images/icon_go_more.png" background-size="cover"></image>
-          </navigator>
+      <view class="item" wx:for="{{hotGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
+        <navigator url="/pages/goods/goods?id={{item.id}}">
+          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
+          <view class="right">
+            <view class="text">
+              <text class="name">{{item.name}}</text>
+              <text class="desc">{{item.goods_brief}}</text>
+              <text class="price">￥{{item.retail_price}}</text>
+            </view>
+          </view>
+        </navigator>
       </view>
     </view>
   </view>

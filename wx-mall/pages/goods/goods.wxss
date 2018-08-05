@@ -680,14 +680,14 @@
 }
 
 .number-item .selnum{
-    width: 322rpx;
+    width: 522rpx;
     height: 71rpx;
     border: 1px solid #ccc;
     display: flex;
 }
 
 .number-item .cut{
-    width: 93.75rpx;
+    width: 143.75rpx;
     height: 100%;
     text-align: center;
     line-height: 65rpx;
@@ -704,7 +704,7 @@
 }
 
 .number-item .add{
-    width: 93.75rpx;
+    width: 143.75rpx;
     height: 100%;
     text-align: center;
     line-height: 65rpx;
