@@ -105,7 +105,7 @@ platform-wechat-mall
 
 * 配置环境（推荐jdk1.8、maven3.3、tomcat8、mysql5.7、redis4.0.1）
 * 创建数据库
-* 初始化sql脚本 /doc/platform.sql
+* 初始化sql脚本 /doc/platform_20180805.sql
 * 导入项目到IDE中
 * 导入支付证书至/platform-shop/src/main/resources/cert/目录下（申请商户号、开通微信支付、下载支付证书）
 * 修改配置文件 /platform-admin/src/main/resources/dev/platform.properties

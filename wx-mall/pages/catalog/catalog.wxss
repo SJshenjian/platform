@@ -141,7 +141,8 @@ page {
   float: left;
   height: 216rpx;
   width: 144rpx;
-  margin-right: 34rpx;
+  margin: 34rpx;
+  
 }
 
 .catalog .bd .item.last {
@@ -149,8 +150,8 @@ page {
 }
 
 .catalog .bd .item .icon {
-  height: 144rpx;
-  width: 144rpx;
+  height: 184rpx;
+  width: 184rpx;
 }
 
 .catalog .bd .item .txt {
@@ -159,5 +160,5 @@ page {
   font-size: 24rpx;
   color: #333;
   height: 72rpx;
-  width: 144rpx;
+  width: 184rpx;
 }

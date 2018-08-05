@@ -178,6 +178,7 @@ Page({
     });
   },
   onLoad: function (options) {
+  
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       id: parseInt(options.id)
@@ -193,7 +194,6 @@ Page({
 
       }
     });
-
     var that = this
     //  高度自适应
     wx.getSystemInfo({
@@ -208,6 +208,7 @@ Page({
         });
       }
     });
+    this.addToCart();
   },
   onReady: function () {
     // 页面渲染完成
@@ -235,7 +236,7 @@ Page({
   },
   closeAttrOrCollect: function () {
     let that = this;
-    if (this.data.openAttr) {
+    if (!this.data.openAttr) {
       this.setData({
         openAttr: false,
       });
@@ -319,7 +320,7 @@ Page({
           let _res = res;
           if (_res.errno == 0) {
             that.setData({
-              openAttr: !that.data.openAttr,
+              openAttr: that.data.openAttr,
             });
             wx.navigateTo({
               url: '/pages/shopping/checkout/checkout?isBuy=true',
@@ -377,7 +378,7 @@ Page({
               title: '添加成功'
             });
             that.setData({
-              openAttr: !that.data.openAttr,
+              openAttr: that.data.openAttr,
               cartGoodsCount: _res.data.cartTotal.goodsCount
             });
             if (that.data.userHasCollect == 1) {
