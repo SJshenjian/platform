@@ -30,5 +30,7 @@ public interface OrderGoodsService {
 
     void exportByVariety(String date, HttpServletResponse response);
 
-    void listNetworkByOrderDate(String orderDate, HttpServletResponse response);
+    void exportNetworkByOrderDate(String orderDate, HttpServletResponse response);
+
+    List<OrderGoodsEntity> listMyIncome(String orderDate, String network);
 }

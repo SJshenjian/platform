@@ -1,9 +1,14 @@
 package com.platform.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.platform.Global;
+import com.platform.entity.SysUserEntity;
+import com.platform.service.SysUserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +19,7 @@ import com.platform.utils.PageUtils;
 import com.platform.utils.Query;
 import com.platform.utils.R;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -29,6 +35,9 @@ import javax.servlet.http.HttpServletResponse;
 public class OrderGoodsController {
 	@Autowired
 	private OrderGoodsService orderGoodsService;
+
+	@Autowired
+	private SysUserService sysUserService;
 
 	/**
 	 * 列表
@@ -117,6 +126,38 @@ public class OrderGoodsController {
 	@RequestMapping("/exportByNetwork")
 	@GetMapping
 	public void exportByNetwork(@RequestParam String orderDate, HttpServletResponse response) {
-		orderGoodsService.listNetworkByOrderDate(orderDate, response);
+		orderGoodsService.exportNetworkByOrderDate(orderDate, response);
 	}
+
+	/**
+	 *  获取我的佣金相关信息 Jian Shen 20180906
+	 */
+	@RequestMapping("/income")
+	@GetMapping
+	public R income(@RequestParam String orderDate, @RequestParam int page, HttpServletRequest request) {
+		SysUserEntity sysUserEntity = (SysUserEntity) SecurityUtils.getSubject().getSession().getAttribute(Global.CURRENT_USER);
+		if (null == sysUserEntity) {
+			return R.error("会话已过期，请重新登录");
+		}
+
+		Map<String, Object> params = new HashMap<>();
+		params.put("username", sysUserEntity.getUsername());
+
+		List<SysUserEntity> sysUserEntities = sysUserService.queryList(params);
+
+		if (sysUserEntities != null) {
+			String[] orderDates = orderDate.split(",");
+			orderDate = orderDates[orderDates.length - 1];
+			List<OrderGoodsEntity> list = orderGoodsService.listMyIncome(orderDate, sysUserEntities.get(0).getDeptName());
+
+			PageUtils pageUtil = new PageUtils(list, list.size(), 10, page);
+
+			return R.ok().put("page", pageUtil);
+		}
+		return null;
+	}
+
+
+
+	
 }

@@ -76,7 +76,7 @@ public class OrderGoodsServiceImpl implements OrderGoodsService {
 	}
 
 	@Override
-	public void listNetworkByOrderDate(String orderDate, HttpServletResponse response) {
+	public void exportNetworkByOrderDate(String orderDate, HttpServletResponse response) {
 		List<String> networks = orderGoodsDao.listNetworkByOrderDate(orderDate);
 
 		String[] header = new String[]{"网点", "品种", "数量", "付款金额", "佣金"};
@@ -118,5 +118,27 @@ public class OrderGoodsServiceImpl implements OrderGoodsService {
 		ExcelExport excelExport = new ExcelExport("各网点供货清单");
 		excelExport.addSheetByArray("供货清单", body, header);
 		excelExport.export(response);
+	}
+
+	@Override
+	public List<OrderGoodsEntity> listMyIncome(String orderDate, String network) {
+		List<OrderGoodsEntity> orderGoods= orderGoodsDao.listByNetwork(orderDate, network);
+		BigDecimal totalPrice = BigDecimal.ZERO;
+		BigDecimal totalBrokerage = BigDecimal.ZERO;
+
+		for (OrderGoodsEntity orderGood : orderGoods) {
+			totalPrice = totalPrice.add(orderGood.getRetailPrice());
+			totalBrokerage = totalBrokerage.add(orderGood.getMarketPrice());
+		}
+
+		OrderGoodsEntity orderGood = new OrderGoodsEntity();
+
+		orderGood.setGoodsName("总计");
+		orderGood.setRetailPrice(totalPrice);
+		orderGood.setMarketPrice(totalBrokerage);
+
+		orderGoods.add(orderGood);
+
+		return orderGoods;
 	}
 }

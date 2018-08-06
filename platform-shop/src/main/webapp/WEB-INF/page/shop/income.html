@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    #parse("sys/header.html")
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="!detail&&showList">
+        <Row :gutter="16">
+            <div class="search-group">
+                <i-col span="4">
+                    <Date-picker type="date" v-model="q.date" placeholder="选择日期" style="width: 200px"></Date-picker>
+                </i-col>
+                <i-button @click="query">查询</i-button>
+            </div>
+        </Row>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+<script src="${rc.contextPath}/js/shop/income.js?_${date.systemTime}"></script>
+</body>
+</html>
