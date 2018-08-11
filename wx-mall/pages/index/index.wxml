@@ -27,6 +27,7 @@
               <text class="desc">{{item.goods_brief}}</text>
               <text class="price">￥{{item.retail_price}}</text>
             </view>
+            <image class="cartAdd" src="../../static/images/cart.png"></image>
           </view>
         </navigator>
         <view class='mask-layer' wx:if="{{showPop}}" bindtap='hideModal'></view>
@@ -50,7 +51,7 @@
           </view>
           <view class="spec-con">
             <view class="number-item">
-              <view class="name" style="width:50px">购买数量</view>
+              购买数量
               <view class="selnum">
                 <view class="cut" bindtap="cutNumber">-</view>
                 <input value="{{number}}" class="number" disabled="true" type="number" />

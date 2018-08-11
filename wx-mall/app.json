@@ -55,7 +55,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/catalog/catalog",
+        "pagePath": "pages/category/category",
         "iconPath": "static/images/ic_menu_sort_nor.png",
         "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
         "text": "分类"

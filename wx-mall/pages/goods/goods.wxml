@@ -131,7 +131,7 @@
       </view>
 
       <view class="number-item">
-        <view class="name">数量(斤数)</view>
+        <view class="name">购买数量</view>
         <view class="selnum">
           <view class="cut" bindtap="cutNumber">-</view>
           <input value="{{number}}" class="number" disabled="true" type="number" />

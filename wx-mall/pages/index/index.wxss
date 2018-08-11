@@ -205,6 +205,14 @@
   width: 456rpx;
 }
 
+.a-popular .b .cartAdd {
+  width:25px;
+  height:25px;
+  margin-top:45px;
+  margin-right:20px 
+}
+
+
 .a-popular .b .name {
   width: 456rpx;
   display: block;

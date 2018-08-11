@@ -58,6 +58,23 @@ Page({
   // 显示底部弹层
   showModal: function (e) {
     var _this = this;
+
+    _this.data.goodsId = e.currentTarget.dataset.id;
+
+    // 获取产品ID
+    util.request(api.GoodsDetail, { id: _this.data.goodsId }).then(function (res) {
+      if (res.errno === 0) {
+        _this.data.productId = res.data.info.primary_product_id;
+        _this.setData({
+          goodsInfo: {
+            name: res.data.info.name,
+            retail_price: res.data.info.retail_price,
+            list_pic_url: res.data.info.list_pic_url,
+          },
+        });
+      }
+    });
+
     var animation = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease',
@@ -75,23 +92,6 @@ Page({
         animationData: animation.export()
       })
     }.bind(_this), 50)
-
-
-    _this.data.goodsId = e.currentTarget.dataset.id;
-  
-    // 获取产品ID
-    util.request(api.GoodsDetail, { id: _this.data.goodsId }).then(function (res) {
-      if (res.errno === 0) {
-        _this.data.productId = res.data.info.primary_product_id;
-        _this.setData({
-          goodsInfo: {
-            name: res.data.info.name,
-            retail_price: res.data.info.retail_price,
-            list_pic_url: res.data.info.list_pic_url,
-          },
-        });
-      }
-    });
    
   },
   // 隐藏底部弹层
