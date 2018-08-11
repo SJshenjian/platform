@@ -1,4 +1,3 @@
-
 <!--index.wxml-->
 <view class="container">
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
@@ -19,7 +18,8 @@
     </view>
     <view class="b">
       <view class="item" wx:for="{{hotGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-        <navigator url="/pages/goods/goods?id={{item.id}}">
+        <!--<navigator url="/pages/goods/goods?id={{item.id}}">-->
+        <navigator bindtap="showModal"  data-id='{{item.id}}'>
           <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
           <view class="right">
             <view class="text">
@@ -29,6 +29,40 @@
             </view>
           </view>
         </navigator>
+        <view class='mask-layer' wx:if="{{showPop}}" bindtap='hideModal'></view>
+        <view class='pop-common attr-pop' wx:if="{{showPop}}" animation='{{animationData}}'>
+          <view class="img-info">
+            <!-- <image class="img" src="{{item.list_pic_url}}"></image>
+            <view class="info">
+              <view class="c">
+                <view class="p">{{item.name}}</view>
+                <view class="pr">￥{{item.retail_price}}</view>
+                <view class="a" wx:if="{{productList.length>0}}">已选择：{{checkedSpecText}}</view>
+              </view>
+            </view> -->
+             <image class="img" src="{{goodsInfo.list_pic_url}}"></image>
+            <view class="info">
+              <view class="c">
+                <view class="p">{{goodsInfo.name}}</view>
+                <view class="pr">￥{{goodsInfo.retail_price}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="spec-con">
+            <view class="number-item">
+              <view class="name" style="width:50px">购买数量</view>
+              <view class="selnum">
+                <view class="cut" bindtap="cutNumber">-</view>
+                <input value="{{number}}" class="number" disabled="true" type="number" />
+                <view class="add" bindtap="addNumber">+</view>
+              </view>
+            </view>
+          </view>
+          <view class="bottom-btn">
+            <view class="c" bindtap='buyGoods'>立即购买</view>
+            <view class="r" bindtap="addToCart">加入购物车</view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
