@@ -98,10 +98,10 @@ public class ApiAuthController extends ApiBaseAction {
             return toResponsFail("登录失败");
         }
         //验证用户信息完整性
-        String sha1 = CommonUtil.getSha1(fullUserInfo.getRawData() + sessionData.getString("session_key"));
+        /*String sha1 = CommonUtil.getSha1(fullUserInfo.getRawData() + sessionData.getString("session_key"));
         if (!fullUserInfo.getSignature().equals(sha1)) {
             return toResponsFail("登录失败");
-        }
+        }*/
         Date nowTime = new Date();
         UserVo userVo = userService.queryByOpenId(sessionData.getString("openid"));
         if (null == userVo) {
