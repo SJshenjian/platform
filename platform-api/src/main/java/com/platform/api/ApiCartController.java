@@ -395,7 +395,11 @@ public class ApiCartController extends ApiBaseAction {
      */
     @ApiOperation(value = "订单提交前的检验和填写相关订单信息")
     @PostMapping("checkout")
-    public Object checkout(@LoginUser UserVo loginUser, Integer couponId, @RequestParam(defaultValue = "cart") String type) {
+    public Object checkout(@LoginUser UserVo loginUser) {
+        JSONObject jsonParam = getJsonRequest();
+        String buyType = jsonParam.getString("type");
+        Integer couponId = jsonParam.getInteger("couponId");
+
         Map<String, Object> resultObj = new HashMap();
         //根据收货地址计算运费
 
@@ -410,7 +414,7 @@ public class ApiCartController extends ApiBaseAction {
         // * 获取要购买的商品和总价
         ArrayList checkedGoodsList = new ArrayList();
         BigDecimal goodsTotalPrice;
-        if (type.equals("cart")) {
+        if (buyType.equals("cart")) {
             Map<String, Object> cartData = (Map<String, Object>) this.getCart(loginUser);
 
             for (CartVo cartEntity : (List<CartVo>) cartData.get("cartList")) {

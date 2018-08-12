@@ -211,7 +211,9 @@ public class ApiOrderService {
         }
 
         //清空已购买的商品
-        apiCartMapper.deleteByCart(loginUser.getUserId(), 1, 1);
+        if (type.equals("cart")) {
+            apiCartMapper.deleteByCart(loginUser.getUserId(), 1, 1);
+        }
         resultObj.put("errno", 0);
         resultObj.put("errmsg", "订单提交成功");
         //

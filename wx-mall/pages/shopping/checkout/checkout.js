@@ -129,11 +129,13 @@ Page({
   },
 
   submitOrder: function () {
+    let that = this;
     if (this.data.addressId <= 0) {
       util.showErrorToast('请选择收货地址');
       return false;
     }
-    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: 'cart' }, 'POST').then(res => {
+    let buyType = this.data.isBuy ? 'buy' : 'cart'
+    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: buyType }, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {

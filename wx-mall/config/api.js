@@ -1,5 +1,5 @@
-var NewApiRootUrl = 'https://www.mingquanrenjia.com/platform-framework/api/';
-//var NewApiRootUrl = 'http://localhost/api/';
+//var NewApiRootUrl = 'https://www.mingquanrenjia.com/platform-framework/api/';
+var NewApiRootUrl = 'http://localhost/api/';
 module.exports = {
   IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
   IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口
@@ -26,8 +26,8 @@ module.exports = {
 
     CartList: NewApiRootUrl + 'cart/index', //获取购物车的数据
     CartAdd: NewApiRootUrl + 'cart/add', // 添加商品到购物车
-    //BuyAdd: NewApiRootUrl + 'buy/add', // 直接购买  
-    BuyAdd: NewApiRootUrl + 'cart/add', // 直接购买  
+    BuyAdd: NewApiRootUrl + 'buy/add', // 直接购买  
+    //BuyAdd: NewApiRootUrl + 'cart/add', // 直接购买  
     CartUpdate: NewApiRootUrl + 'cart/update', // 更新购物车的商品
     CartDelete: NewApiRootUrl + 'cart/delete', // 删除购物车的商品
     CartChecked: NewApiRootUrl + 'cart/checked', // 选择或取消选择商品

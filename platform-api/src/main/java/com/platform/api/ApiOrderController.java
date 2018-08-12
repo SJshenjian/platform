@@ -65,7 +65,7 @@ public class ApiOrderController extends ApiBaseAction {
         params.put("page", page);
         params.put("limit", size);
         params.put("sidx", "id");
-        params.put("order", "asc");
+        params.put("order", "desc");
         //查询列表数据
         Query query = new Query(params);
         List<OrderVo> orderEntityList = orderService.queryList(query);
