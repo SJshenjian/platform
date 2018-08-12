@@ -22,18 +22,18 @@
         <button class="save" bindtap="saveAddress">保存</button>
     </view>
 
-    <view class="region-select" wx:if="{{openSelectRegion}}">
+   <view class="region-select" wx:if="{{openSelectRegion}}">
       <view class="hd">
         <view class="region-selected">
           <view class="item {{item.id == 0 ? 'disabled' : ''}} {{(regionType -1) === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="{{item.id}}">{{item.name}}</view>
         </view>
         <view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
       </view>
-      <view class="bd">
-        <scroll-view scroll-y="true" class="region-list">
+      <scroll-view scroll-y class="bd">
+        <view class="region-list">
           <view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="{{item.id}}">{{item.name}}</view>
-        </scroll-view>
-      </view>
+        </view>
+      </scroll-view>
     </view>
 </view>
 <view class="bg-mask" bindtap="cancelSelectRegion" wx:if="{{openSelectRegion}}"></view>
