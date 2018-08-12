@@ -8,6 +8,7 @@ Page({
       province_id: 0,
       city_id: 0,
       district_id: 0,
+      network_id: 0,
       address: '',
       full_region: '',
       userName: '',
@@ -19,7 +20,8 @@ Page({
     selectRegionList: [
       { id: 0, name: '省份', parent_id: 1, type: 1 },
       { id: 0, name: '城市', parent_id: 1, type: 2 },
-      { id: 0, name: '区县', parent_id: 1, type: 3 }
+      { id: 0, name: '区县', parent_id: 1, type: 3 },
+      { id: 0, name: '网点', parent_id: 1, type: 4 }
     ],
     regionType: 1,
     regionList: [],
@@ -85,7 +87,7 @@ Page({
 
     //设置区域选择数据
     let address = this.data.address;
-    if (address.province_id > 0 && address.city_id > 0 && address.district_id > 0) {
+    if (address.province_id > 0 && address.city_id > 0 && address.district_id > 0 && address.network_id > 0) {
       let selectRegionList = this.data.selectRegionList;
       selectRegionList[0].id = address.province_id;
       selectRegionList[0].name = address.province_name;
@@ -99,9 +101,13 @@ Page({
       selectRegionList[2].name = address.district_name;
       selectRegionList[2].parent_id = address.city_id;
 
+      selectRegionList[3].id = address.network_id;
+      selectRegionList[3].name = address.network_name;
+      selectRegionList[3].parent_id = address.district_id;
+
       this.setData({
         selectRegionList: selectRegionList,
-        regionType: 3
+        regionType: 4
       });
 
       this.getRegionList(address.city_id);
@@ -110,7 +116,8 @@ Page({
         selectRegionList: [
           { id: 0, name: '省份', parent_id: 1, type: 1 },
           { id: 0, name: '城市', parent_id: 1, type: 2 },
-          { id: 0, name: '区县', parent_id: 1, type: 3 }
+          { id: 0, name: '区县', parent_id: 1, type: 3 },
+          { id: 0, name: '网点', parent_id: 1, type: 4 }
         ],
         regionType: 1
       })
@@ -166,7 +173,7 @@ Page({
     selectRegionList[regionType - 1] = regionItem;
 
 
-    if (regionType != 3) {
+    if (regionType != 4) {
       this.setData({
         selectRegionList: selectRegionList,
         regionType: regionType + 1
@@ -182,7 +189,14 @@ Page({
     selectRegionList.map((item, index) => {
       if (index > regionType - 1) {
         item.id = 0;
-        item.name = index == 1 ? '城市' : '区县';
+        if (index == 1) {
+          item.name = '城市';
+        } else if (index == 2) {
+          item.name = '区县';
+        } else if (index == 3) {
+          item.name = '网点';
+        }
+
         item.parent_id = 0;
       }
       return item;
@@ -220,9 +234,11 @@ Page({
     address.province_id = selectRegionList[0].id;
     address.city_id = selectRegionList[1].id;
     address.district_id = selectRegionList[2].id;
+    address.network_id = selectRegionList[3].id;
     address.province_name = selectRegionList[0].name;
     address.city_name = selectRegionList[1].name;
     address.district_name = selectRegionList[2].name;
+    address.network_name = selectRegionList[3].name;
     address.full_region = selectRegionList.map(item => {
       return item.name;
     }).join('');
@@ -236,7 +252,7 @@ Page({
   cancelSelectRegion() {
     this.setData({
       openSelectRegion: false,
-      regionType: this.data.regionDoneStatus ? 3 : 1
+      regionType: this.data.regionDoneStatus ? 4 : 1
     });
 
   },
@@ -280,15 +296,8 @@ Page({
       util.showErrorToast('请输入手机号码');
       return false;
     }
-
-
     if (address.district_id == 0) {
-      util.showErrorToast('请输入省市区');
-      return false;
-    }
-
-    if (address.detailInfo == '') {
-      util.showErrorToast('请输入详细地址');
+      util.showErrorToast('请输入网点信息');
       return false;
     }
 
@@ -305,7 +314,7 @@ Page({
       provinceName: address.province_name,
       cityName: address.city_name,
       countyName: address.district_name,
-      detailInfo: address.detailInfo,
+      detailInfo: address.network_name,
     }, 'POST').then(function (res) {
       if (res.errno === 0) {
         wx.navigateBack({

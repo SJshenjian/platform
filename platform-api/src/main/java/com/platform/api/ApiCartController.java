@@ -407,9 +407,11 @@ public class ApiCartController extends ApiBaseAction {
         //默认收货地址
         Map param = new HashMap();
         param.put("user_id", loginUser.getUserId());
-        List addressEntities = addressService.queryList(param);
 
-        resultObj.put("checkedAddress", addressEntities.get(0));
+        List<AddressVo> addressEntities = addressService.queryList(param);
+        AddressVo addressVo = addressEntities  != null ? addressEntities.get(0) : null;
+
+        resultObj.put("checkedAddress", addressVo);
 
         // * 获取要购买的商品和总价
         ArrayList checkedGoodsList = new ArrayList();
