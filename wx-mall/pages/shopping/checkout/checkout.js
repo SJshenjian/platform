@@ -51,7 +51,8 @@ Page({
           couponPrice: res.data.couponPrice,
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
-          orderTotalPrice: res.data.orderTotalPrice
+          orderTotalPrice: res.data.orderTotalPrice,
+          addressId: res.data.checkedAddress.id
         });
       }
       wx.hideLoading();
@@ -78,17 +79,6 @@ Page({
       title: '加载中...',
     })
     this.getCheckoutInfo();
-    
-    try {
-      var addressId = wx.getStorageSync('addressId');
-      if (addressId) {
-        this.setData({
-          'addressId': addressId
-        });
-      }
-    } catch (e) {
-      // Do something when catch error
-    }
   },
 
   /**
