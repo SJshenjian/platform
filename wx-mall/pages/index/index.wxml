@@ -24,7 +24,8 @@
           <view class="right">
             <view class="text">
               <text class="name">{{item.name}}</text>
-              <text class="desc">{{item.goods_brief}}</text>
+              <text class="desc" wx:if="{{item.goods_brief != null}}">{{item.goods_brief}}</text>
+              <text class="desc" wx:if="{{item.goods_brief == null}}" decode="{{true}}">&ensp;</text>
               <text class="price">￥{{item.retail_price}}</text>
             </view>
             <image class="cartAdd" src="../../static/images/cart.png"></image>
