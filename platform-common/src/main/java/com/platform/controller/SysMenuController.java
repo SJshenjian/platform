@@ -17,8 +17,8 @@ import java.util.Map;
 /**
  * 系统菜单
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年10月27日 下午9:58:15
  */
 @RestController

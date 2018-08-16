@@ -13,8 +13,8 @@ import java.util.Map;
  * Excel文件导入的基本功能类
  * 可导入EXCEL2003 和 EXCEL2007格式。
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年10月28日 13:11:27
  */
 public class ExcelImport {

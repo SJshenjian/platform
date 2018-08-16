@@ -7,8 +7,8 @@ import java.io.Serializable;
  * 商品顶部轮播图
  * 表名 nideshop_goods_gallery
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-23 14:41:43
  */
 public class GoodsGalleryEntity implements Serializable {

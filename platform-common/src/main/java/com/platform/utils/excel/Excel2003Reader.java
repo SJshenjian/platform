@@ -20,8 +20,8 @@ import java.util.Map;
 /**
  * Excel2003格式解析
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年10月28日 13:11:27
  */
 public class Excel2003Reader implements HSSFListener {

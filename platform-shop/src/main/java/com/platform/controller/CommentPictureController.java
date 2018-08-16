@@ -15,8 +15,8 @@ import java.util.Map;
 /**
  * 评价图片Controller
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-29 14:45:55
  */
 @RestController

@@ -3,8 +3,8 @@ package com.platform.utils;
 /**
  * 系统参数相关Key
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-03-26 10:33
  */
 public class ConfigConstant {

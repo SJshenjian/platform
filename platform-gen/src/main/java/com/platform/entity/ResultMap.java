@@ -4,8 +4,8 @@ package com.platform.entity;
  * 名称：ResultMap <br>
  * 描述：查询表信息返回的BaseResultMap<br>
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-09-17 20:20
  */
 public class ResultMap {

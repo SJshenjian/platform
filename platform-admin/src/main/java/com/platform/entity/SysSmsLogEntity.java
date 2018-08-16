@@ -7,8 +7,8 @@ import java.util.Date;
  * 发送短信日志
  * 表名 sys_sms_log
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-12-16 23:38:05
  */
 public class SysSmsLogEntity implements Serializable {

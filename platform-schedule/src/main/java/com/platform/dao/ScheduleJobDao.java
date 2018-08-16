@@ -7,8 +7,8 @@ import java.util.Map;
 /**
  * 定时任务
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年12月1日 下午10:29:57
  */
 public interface ScheduleJobDao extends BaseDao<ScheduleJobEntity> {

@@ -8,8 +8,8 @@ import java.util.Date;
  * 评价图片实体
  * 表名 nideshop_comment_picture
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-29 14:45:55
  */
 public class CommentPictureEntity implements Serializable {

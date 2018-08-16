@@ -23,8 +23,8 @@ import java.util.Map;
 /**
  * 代码生成器
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年1月3日 下午6:35:28
  */
 @Controller

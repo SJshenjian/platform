@@ -12,8 +12,8 @@ import java.util.HashMap;
 /**
  * 异常处理器
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年10月27日 下午10:16:19
  */
 @RestControllerAdvice(value = {"com.platform"})

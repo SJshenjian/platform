@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Param;
 /**
  * 系统配置信息
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年12月4日 下午6:46:16
  */
 public interface SysConfigDao extends BaseDao<SysConfigEntity> {

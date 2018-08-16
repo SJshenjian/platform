@@ -7,8 +7,8 @@ import java.io.Serializable;
  * 实体
  * 表名 nideshop_ad_position
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-19 12:02:42
  */
 public class AdPositionEntity implements Serializable {

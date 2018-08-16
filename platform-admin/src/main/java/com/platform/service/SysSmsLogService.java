@@ -8,8 +8,8 @@ import java.util.Map;
 /**
  * 发送短信日志Service
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-12-16 23:38:05
  */
 public interface SysSmsLogService {

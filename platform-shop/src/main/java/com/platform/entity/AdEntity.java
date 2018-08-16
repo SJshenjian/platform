@@ -8,8 +8,8 @@ import java.util.Date;
  * 实体
  * 表名 nideshop_ad
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-19 09:37:35
  */
 public class AdEntity implements Serializable {

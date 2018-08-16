@@ -26,8 +26,8 @@ import java.util.*;
  * 使用POI进行EXCEL导出的功能类。
  * 目前简单处理，未设置内存优化。 数据量偏大，出现性能问题时再处理。
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年10月28日 13:11:27
  */
 public class ExcelExport {

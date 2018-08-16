@@ -8,8 +8,8 @@ import java.util.Map;
 /**
  * 商品对应规格表值表Service接口
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-31 11:15:55
  */
 public interface GoodsSpecificationService {

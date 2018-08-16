@@ -6,8 +6,8 @@ import java.util.Date;
 
 
 /**
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-15 08:03:39
  */
 public class BrandVo implements Serializable {

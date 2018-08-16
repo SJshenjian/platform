@@ -2,9 +2,11 @@ package com.platform.controller;
 
 import com.platform.entity.OrderEntity;
 import com.platform.service.OrderService;
+import com.platform.service.SysUserService;
 import com.platform.utils.PageUtils;
 import com.platform.utils.Query;
 import com.platform.utils.R;
+import com.platform.utils.ShiroUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,8 @@ import java.util.Map;
 
 
 /**
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-13 10:41:09
  */
 @RestController
@@ -23,6 +25,9 @@ import java.util.Map;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private SysUserService sysUserService;
 
     /**
      * 列表
@@ -33,6 +38,10 @@ public class OrderController {
         // 查询列表数据
         Query query = new Query(params);
 
+        String address = sysUserService.queryObject(ShiroUtils.getUserId()).getDeptName();// 新增按网点查询订单
+        if (!"总部".equals(address)) {
+            params.put("address", address);
+        }
         List<OrderEntity> orderList = orderService.queryList(query);
         int total = orderService.queryTotal(query);
 

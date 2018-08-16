@@ -8,8 +8,8 @@ import java.util.Date;
  * 实体
  * 表名 nideshop_channel
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-22 19:19:56
  */
 public class ChannelEntity implements Serializable {

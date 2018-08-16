@@ -17,8 +17,8 @@ import java.util.Map;
 /**
  * 优惠券Controller
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-19 12:53:26
  */
 @RestController

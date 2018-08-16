@@ -7,8 +7,8 @@ import java.util.Map;
 /**
  * Dao
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-23 14:41:43
  */
 public interface GoodsGalleryDao extends BaseDao<GoodsGalleryEntity> {

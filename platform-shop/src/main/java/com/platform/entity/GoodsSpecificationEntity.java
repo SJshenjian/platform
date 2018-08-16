@@ -8,8 +8,8 @@ import java.util.Date;
  * 商品对应规格表值表实体
  * 表名 nideshop_goods_specification
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-31 11:15:55
  */
 public class GoodsSpecificationEntity implements Serializable {

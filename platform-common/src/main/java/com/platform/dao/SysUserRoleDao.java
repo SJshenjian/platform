@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * 用户与角色对应关系
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年9月18日 上午9:34:46
  */
 public interface SysUserRoleDao extends BaseDao<SysUserRoleEntity> {

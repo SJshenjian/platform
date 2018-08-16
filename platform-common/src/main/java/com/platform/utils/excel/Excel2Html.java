@@ -18,8 +18,8 @@ import java.util.Map;
 /**
  * 解析excel成html
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年10月28日 13:11:27
  */
 public class Excel2Html {

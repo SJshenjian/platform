@@ -3,8 +3,8 @@ package com.platform.entity;
 /**
  * 动态表信息
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年11月16日 下午10:43:36
  */
 public class TableInfo {

@@ -7,8 +7,8 @@ import java.util.Date;
 /**
  * 会员实体
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-16 15:02:28
  */
 public class UserEntity implements Serializable {

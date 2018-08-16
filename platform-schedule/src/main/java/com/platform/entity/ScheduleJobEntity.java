@@ -8,8 +8,8 @@ import java.util.Date;
 /**
  * 定时器
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2016年11月28日 下午12:54:44
  */
 public class ScheduleJobEntity implements Serializable {

@@ -7,8 +7,8 @@ import java.util.Date;
  * 文件上传
  * 表名 sys_oss
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-03-25 12:13:26
  */
 public class SysOssEntity implements Serializable {

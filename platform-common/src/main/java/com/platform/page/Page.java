@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * @param <T>
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017年11月16日 下午10:43:36
  */
 public class Page<T> {

@@ -15,8 +15,8 @@ import java.util.Map;
 /**
  * 用户评价Service实现类
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-08-28 17:03:40
  */
 @Service("commentService")

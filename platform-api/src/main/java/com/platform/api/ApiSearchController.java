@@ -26,8 +26,8 @@ import java.util.Map;
 /**
  * API登录授权
  *
- * @author lipengjun
- * @email 939961241@qq.com
+ * @author Jian Shen
+ * @email SJshenjian@outlook.com
  * @date 2017-03-23 15:31
  */
 @Api(tags = "商品搜索")
