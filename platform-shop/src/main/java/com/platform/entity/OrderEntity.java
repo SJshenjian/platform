@@ -3,6 +3,7 @@ package com.platform.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -90,6 +91,20 @@ public class OrderEntity implements Serializable {
 
     //
     private String userName;
+
+    private List<OrderGoodsEntity> orderGoods;
+
+    /*
+    * 适当冗余 OrderGoodsEntity 的部分字段，便于在service层进行特殊处理，尽可能无需前端进行特殊化处理
+     */
+    //商品名称
+    private String goodsName;
+    //商品数量
+    private Integer number;
+    //市场价
+    private BigDecimal marketPrice;
+    //零售价格
+    private BigDecimal retailPrice;
 
     public String getOrderType() {
         return orderType;
@@ -561,5 +576,45 @@ public class OrderEntity implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public List<OrderGoodsEntity> getOrderGoods() {
+        return orderGoods;
+    }
+
+    public void setOrderGoods(List<OrderGoodsEntity> orderGoods) {
+        this.orderGoods = orderGoods;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public BigDecimal getMarketPrice() {
+        return marketPrice;
+    }
+
+    public void setMarketPrice(BigDecimal marketPrice) {
+        this.marketPrice = marketPrice;
+    }
+
+    public BigDecimal getRetailPrice() {
+        return retailPrice;
+    }
+
+    public void setRetailPrice(BigDecimal retailPrice) {
+        this.retailPrice = retailPrice;
     }
 }

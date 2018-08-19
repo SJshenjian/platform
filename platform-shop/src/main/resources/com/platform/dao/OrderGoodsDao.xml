@@ -57,7 +57,7 @@
         FROM
             nideshop_order_goods
         WHERE
-            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE '${date}%' )
+            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE concat(#{date},'%') )
         GROUP BY goods_name;
     </select>
 
@@ -68,7 +68,7 @@
         FROM
             nideshop_order_goods
         WHERE
-            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE '${date}%' AND address ='${address}')
+            order_id IN ( SELECT id FROM nideshop_order WHERE pay_status = '2' AND pay_time LIKE concat(#{date},'%') AND address =#{address})
         GROUP BY
             goods_name
     </select>
@@ -80,7 +80,7 @@
             nideshop_order
         WHERE
             pay_status = '2'
-            AND pay_time LIKE '${date}%'
+            AND pay_time LIKE concat(#{date},'%')
         GROUP BY
             address
     </select>

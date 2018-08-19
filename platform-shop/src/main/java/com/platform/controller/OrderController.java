@@ -35,13 +35,13 @@ public class OrderController {
     @RequestMapping("/list")
     @RequiresPermissions("order:list")
     public R list(@RequestParam Map<String, Object> params) {
-        // 查询列表数据
-        Query query = new Query(params);
-
         String address = sysUserService.queryObject(ShiroUtils.getUserId()).getDeptName();// 新增按网点查询订单
         if (!"总部".equals(address)) {
             params.put("address", address);
         }
+
+        // 查询列表数据
+        Query query = new Query(params);
         List<OrderEntity> orderList = orderService.queryList(query);
         int total = orderService.queryTotal(query);
 
@@ -50,6 +50,13 @@ public class OrderController {
         return R.ok().put("page", pageUtil);
     }
 
+    @RequestMapping("/listOrder")
+    @GetMapping
+    public R list(@RequestParam String orderDate) {
+        List<Object> orders = orderService.listOrder(orderDate);
+
+        return R.ok().put("orders", orders);
+    }
 
     /**
      * 信息
@@ -57,9 +64,9 @@ public class OrderController {
     @RequestMapping("/info/{id}")
     @RequiresPermissions("order:info")
     public R info(@PathVariable("id") Integer id) {
-        OrderEntity order = orderService.queryObject(id);
+        OrderEntity orders = orderService.queryObject(id);
 
-        return R.ok().put("order", order);
+        return R.ok().put("orders", orders);
     }
 
     /**

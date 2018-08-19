@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>明泉人家票据</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/font-awesome.min.css">
+    <!--jqgrid-->
+    <link rel="stylesheet" href="${rc.contextPath}/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="${rc.contextPath}/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <!--main-->
+    <!--<link rel="stylesheet" href="${rc.contextPath}/statics/css/main.css">-->  <!-- 此文件的某属性影响打印分页屏蔽 -->
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/iview.css">
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/style.css">
+    <!--treegrid-->
+    <link rel="stylesheet" href="${rc.contextPath}/statics/plugins/treegrid/jquery.treegrid.css">
+    <!--富文本-->
+    <link rel="stylesheet" href='${rc.contextPath}/statics/plugins/froala_editor/css/froala_editor.min.css'/>
+
+    <!--jquery-->
+    <script src="${rc.contextPath}/statics/libs/jquery.min.js"></script>
+    <!--layer-->
+    <script src="${rc.contextPath}/statics/plugins/layer/layer.js"></script>
+    <!--bootstrap-->
+    <script src="${rc.contextPath}/statics/libs/bootstrap.min.js"></script>
+    <!--vue-->
+    <script src="${rc.contextPath}/statics/libs/vue.min.js"></script>
+    <script src="${rc.contextPath}/statics/libs/iview.min.js"></script>
+    <!--jqgrid-->
+    <script src="${rc.contextPath}/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <!--ztree-->
+    <script src="${rc.contextPath}/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <!--treegrid-->
+    <script src="${rc.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+
+    <!--simplemde富文本-->
+    <script src='${rc.contextPath}/statics/plugins/froala_editor/js/froala_editor.min.js'></script>
+    <!--[if lt IE 9]>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/froala_editor_ie8.min.js"></script>
+    <![endif]-->
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/tables.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/lists.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/colors.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/media_manager.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/font_family.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/font_size.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/block_styles.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/plugins/video.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/froala_editor/js/langs/zh_cn.js"></script>
+
+    <script src="${rc.contextPath}/statics/libs/jquery-extend.js"></script>
+    <script src="${rc.contextPath}/statics/libs/iNotify.js"></script>
+    <script src="${rc.contextPath}/js/common.js"></script>
+
+    <!--jqprint-->
+    <script src="${rc.contextPath}/statics/plugins/jqprint/jquery-migrate-1.2.1.min.js"></script>
+    <script src="${rc.contextPath}/statics/plugins/jqprint/jquery.jqprint-0.3.js"></script>
+</head>
+<body class="gray-bg">
+<div id="rrapp" v-cloak class="wrapper wrapper-content animated fadeInRight">
+    <!--<div style="float: right;">
+        <i-button v-if="showBtn" class="btn btn-warning dim" @click="print"><i class="fa fa-print"></i>打印
+        </i-button>
+    </div>-->
+    <div id="printContent">
+            <div class="raw">
+                <div v-for="order in orders" :id="order.id">
+                    <div class="col-sm-12">
+                        <div class="ibox-content p-xl">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <address>
+                                        <strong>{{order.network}}</strong><br>
+                                    </address>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive m-t">
+                                <table class="table table-hover table-responsive table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>订单号</th>
+                                        <th>收货人 手机</th>
+                                        <th>品名</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th>总价</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="orderInfo in order.orders">
+                                        <td>
+                                            <div><strong>{{orderInfo.id}}</strong></div>
+                                        </td>
+                                        <td>{{orderInfo.orderSn}}</td>
+                                        <td>{{orderInfo.consignee}} {{orderInfo.mobile}}</td>
+                                        <td>{{orderInfo.goodsName}}</td>
+                                        <td>{{orderInfo.retailPrice}}</td>
+                                        <td>{{orderInfo.number}}</td>
+                                        <td>{{orderInfo.marketPrice}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <table class="table invoice-total">
+                                <tbody>
+                                <tr>
+                                    <td><strong>总计</strong>
+                                    </td>
+                                    <td>&yen;{{order.totalPrice}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="page-break-after: always; position: static"></div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let orderDate = getQueryString("orderDate");
+    var vm = new Vue({
+        el: '#rrapp',
+        data: {
+            showBtn: true,
+            orders: {},
+            nowDate: transDate(new Date(), 'yyyy/MM/dd')
+        },
+        methods: {
+            print: function () {
+                $("#printContent").jqprint({
+                    debug: false, //如果是true则可以显示iframe查看效果（iframe默认高和宽都很小，可以再源码中调大），默认是false
+                    importCSS: true, //true表示引进原来的页面的css，默认是true。（如果是true，先会找$("link[media=print]")，若没有会去找$("link")中的css文件）
+                    printContainer: false, //表示如果原来选择的对象必须被纳入打印（注意：设置为false可能会打破你的CSS规则）。
+                    operaSupport: true//表示如果插件也必须支持歌opera浏览器，在这种情况下，它提供了建立一个临时的打印选项卡。默认是true
+                });
+            }
+        },
+        created: function () {
+            Ajax.request({
+                url: "../order/listOrder?orderDate=" + orderDate,
+                async: true,
+                successCallback: function (r) {
+                    vm.orders = r.orders;
+                }
+            });
+
+        }
+    });
+</script>
+
+</body>
+
+</html>

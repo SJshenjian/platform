@@ -40,6 +40,11 @@
         <result property="callbackStatus" column="callback_status"/>
         <result property="orderType" column="order_type"/>
         <result property="userName" column="username"/>
+
+        <!-- 配置一对多关联 -->
+        <collection property="orderGoods" ofType="com.platform.entity.OrderGoodsEntity" select="queryOrderGoods" column="id">
+
+        </collection>
     </resultMap>
 
     <select id="queryObject" resultType="com.platform.entity.OrderEntity">
@@ -85,8 +90,24 @@
         </if>
     </select>
 
+    <select id="listOrder" resultMap="orderMap">
+        SELECT
+            id, order_sn, consignee, mobile
+        FROM
+            nideshop_order
+        WHERE
+            pay_status = '2'
+            AND address = #{address}
+            AND pay_time LIKE concat(#{date}, '%')
+        ORDER BY
+            consignee;
+    </select>
+
     <select id="queryTotal" resultType="int">
         select count(*) from nideshop_order WHERE 1=1
+        <if test="address != null and address.trim() != ''">
+            AND address = #{address}
+        </if>
         <if test="orderSn != null and orderSn.trim() != ''">
             AND order_sn LIKE concat('%',#{orderSn},'%')
         </if>
@@ -102,6 +123,18 @@
         <if test="orderType != null and orderType.trim() != ''">
             AND order_type = #{orderType}
         </if>
+    </select>
+
+    <select id="queryOrderGoods" parameterType="int" resultType="com.platform.entity.OrderGoodsEntity">
+        SELECT
+            goods_name,
+            `number`,
+            market_price,
+            ( market_price * `number` ) AS retail_price
+        FROM
+            nideshop_order_goods
+        WHERE
+            order_id = #{id}
     </select>
 
     <insert id="save" parameterType="com.platform.entity.OrderEntity" useGeneratedKeys="true" keyProperty="id">
