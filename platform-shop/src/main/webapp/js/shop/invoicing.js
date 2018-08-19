@@ -14,8 +14,8 @@ let vm = new Vue({
                 return ;
             }
             var year = vm.q.date.getFullYear();
-            var month = (vm.q.date.getMonth() + 1) / 9 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
-            var day = vm.q.date.getDate() / 9 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
+            var month = (vm.q.date.getMonth() + 1) / 10 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
+            var day = vm.q.date.getDate() / 10 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
             var orderDate = '' + year + '-' + month + '-' + day;
 
             var params = {'orderDate': orderDate};
@@ -39,8 +39,8 @@ let vm = new Vue({
                 return ;
             }
             var year = vm.q.date.getFullYear();
-            var month = (vm.q.date.getMonth() + 1) / 9 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
-            var day = vm.q.date.getDate() / 9 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
+            var month = (vm.q.date.getMonth() + 1) / 10 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
+            var day = vm.q.date.getDate() / 10 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
             var orderDate = '' + year + '-' + month + '-' + day;
 
             var params = {'orderDate': orderDate};
@@ -64,8 +64,8 @@ let vm = new Vue({
                 return ;
             }
             var year = vm.q.date.getFullYear();
-            var month = (vm.q.date.getMonth() + 1) / 9 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
-            var day = vm.q.date.getDate() / 9 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
+            var month = (vm.q.date.getMonth() + 1) / 10 < 1 ? '0' + (vm.q.date.getMonth() + 1) : vm.q.date.getMonth() + 1;
+            var day = vm.q.date.getDate() / 10 < 1 ? '0' + vm.q.date.getDate() : vm.q.date.getDate();
             var orderDate = '' + year + '-' + month + '-' + day;
 
             /*openWindow({
