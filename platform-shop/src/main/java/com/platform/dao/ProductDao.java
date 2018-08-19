@@ -11,4 +11,5 @@ import com.platform.entity.ProductEntity;
  */
 public interface ProductDao extends BaseDao<ProductEntity> {
 
+    void updateByGoodsId(ProductEntity productEntity);
 }

@@ -113,6 +113,17 @@ public class GoodsServiceImpl implements GoodsService {
     @Transactional
     public int update(GoodsEntity goods) {
         SysUserEntity user = ShiroUtils.getUserEntity();
+
+        //保存产品信息
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setGoodsId(goods.getId());
+        productEntity.setGoodsSn(goods.getGoodsSn());
+        productEntity.setGoodsNumber(goods.getGoodsNumber());
+        productEntity.setRetailPrice(goods.getRetailPrice());
+        productEntity.setMarketPrice(goods.getMarketPrice());
+        productEntity.setGoodsSpecificationIds("");
+        productDao.updateByGoodsId(productEntity);
+
         List<GoodsAttributeEntity> attributeEntityList = goods.getAttributeEntityList();
         if (null != attributeEntityList && attributeEntityList.size() > 0) {
             for (GoodsAttributeEntity goodsAttributeEntity : attributeEntityList) {
