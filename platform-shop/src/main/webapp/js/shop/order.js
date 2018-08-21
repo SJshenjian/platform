@@ -90,8 +90,8 @@ $(function () {
                     return value;
                 }
             },
-            {label: '快递公司', name: 'shippingName', index: 'shipping_name', width: 80},
-            {label: '快递单号', name: 'shippingNo', index: 'shipping_No', width: 80},
+            /*{label: '快递公司', name: 'shippingName', index: 'shipping_name', width: 80},
+            {label: '快递单号', name: 'shippingNo', index: 'shipping_No', width: 80},*/
             {label: '实际支付金额', name: 'actualPrice', index: 'actual_price', width: 80},
             {label: '订单总价', name: 'orderPrice', index: 'order_price', width: 60},
             {label: '商品总价', name: 'goodsPrice', index: 'goods_price', width: 60},
@@ -134,13 +134,12 @@ let vm = new Vue({
             if (id == null) {
                 return;
             }
-            vm.showList = false;
-            vm.title = "发货";
             Ajax.request({
                 url: "../order/info/" + id,
                 async: true,
                 successCallback: function (r) {
-                    vm.order = r.order;
+                    vm.order = r.orders;
+                    vm.reload();
                 }
             });
         },
@@ -192,7 +191,7 @@ let vm = new Vue({
                 url: "../order/info/" + rowId,
                 async: true,
                 successCallback: function (r) {
-                    vm.order = r.order;
+                    vm.order = r.orders;
                 }
             });
         },

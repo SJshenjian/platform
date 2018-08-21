@@ -96,7 +96,7 @@
                 url: "../order/info/" + orderId,
                 async: true,
                 successCallback: function (r) {
-                    vm.order = r.order;
+                    vm.order = r.orders;
                 }
             });
             Ajax.request({

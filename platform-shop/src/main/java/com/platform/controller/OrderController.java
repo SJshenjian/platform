@@ -62,7 +62,7 @@ public class OrderController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("order:info")
+    //@RequiresPermissions("order:info")
     public R info(@PathVariable("id") Integer id) {
         OrderEntity orders = orderService.queryObject(id);
 

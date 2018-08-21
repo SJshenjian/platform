@@ -47,7 +47,7 @@
         <div id="jqGridPager"></div>
     </div>
 
-    <Card v-show="!showList&&!detail">
+    <!--<Card v-show="!showList&&!detail">
         <p slot="title">{{title}}</p>
         <i-form :model="order" :label-width="100">
             <Form-item label="快递公司" prop="shippingId">
@@ -65,7 +65,7 @@
                 返回</i-button>
             </Form-item>
         </i-form>
-    </Card>
+    </Card>-->
 
     <Card v-show="detail">
         <p slot="title" style="height: auto">
@@ -152,18 +152,18 @@
             <Form-item label="联系电话" prop="mobile">
                 <i-input v-model="order.mobile" readonly/>
             </Form-item>
-            <Form-item label="快递公司" prop="shippingName">
+            <!--<Form-item label="快递公司" prop="shippingName">
                 <i-input v-model="order.shippingName" readonly/>
             </Form-item>
             <Form-item label="快递单号" prop="shippingNo">
                 <i-input v-model="order.shippingNo" readonly/>
-            </Form-item>
+            </Form-item>-->
             <Form-item label="付款方" prop="payName">
                 <i-input v-model="order.payName" readonly/>
             </Form-item>
-            <Form-item label="快递费用" prop="shippingFee">
+            <!--<Form-item label="快递费用" prop="shippingFee">
                 <i-input v-model="order.shippingFee" readonly/>
-            </Form-item>
+            </Form-item>-->
             <Form-item label="实际支付" prop="actualPrice">
                 <i-input v-model="order.actualPrice" readonly/>
             </Form-item>
@@ -179,9 +179,9 @@
             <Form-item label="付款时间" prop="payTime">
                 <Date-picker v-model="order.payTime" placeholder="使用时间" readonly/>
             </Form-item>
-            <Form-item label="配送费用" prop="freightPrice">
+            <!--<Form-item label="配送费用" prop="freightPrice">
                 <i-input v-model="order.freightPrice" readonly/>
-            </Form-item>
+            </Form-item>-->
 
             <Form-item>
                 <i-button type="warning" @click="reload" style="margin-left: 8px"/>
