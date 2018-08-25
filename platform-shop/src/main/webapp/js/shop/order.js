@@ -129,33 +129,27 @@ let vm = new Vue({
         query: function () {
             vm.reload();
         },
-        sendGoods: function (event) {
-            let id = getSelectedRow("#jqGrid");
-            if (id == null) {
-                return;
-            }
+
+        batchSendGoods: function (event) {
             Ajax.request({
-                url: "../order/info/" + id,
+                url: "../order/batchSendGoods/",
                 async: true,
                 successCallback: function (r) {
-                    vm.order = r.orders;
-                    vm.reload();
+                    alert('昨日所有订单发货成功', function (index) {
+                        vm.reload();
+                    });
                 }
             });
         },
-        confirm: function (event) {
-            let id = getSelectedRow("#jqGrid");
-            if (id == null) {
-                return;
-            }
+        batchConfirm: function (event) {
             confirm('确定收货？', function () {
                 Ajax.request({
-                    type: "POST",
-                    url: "../order/confirm",
-                    contentType: "application/json",
-                    params: JSON.stringify(id),
+                    url: "../order/batchConfirm",
+                    async: true,
                     successCallback: function (r) {
-                        vm.reload();
+                        alert('昨日所有订单确认收获成功', function (index) {
+                            vm.reload();
+                        });
                     }
                 });
             });

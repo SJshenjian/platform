@@ -35,11 +35,11 @@
                 <i-button @click="query">查询</i-button>
             </div>
             <div class="buttons-group">
-                #if($shiro.hasPermission("order:sendGoods"))
-                <i-button type="warning" @click="sendGoods">发货</i-button>
+                #if($shiro.hasPermission("order:batchSendGoods"))
+                <i-button type="warning" @click="batchSendGoods">一键发货</i-button>
                 #end
-                #if($shiro.hasPermission("order:confirm"))
-                <i-button type="error" @click="confirm">确认收货</i-button>
+                #if($shiro.hasPermission("order:batchConfirm"))
+                <i-button type="error" @click="batchConfirm">一键确认收货</i-button>
                 #end
             </div>
         </Row>

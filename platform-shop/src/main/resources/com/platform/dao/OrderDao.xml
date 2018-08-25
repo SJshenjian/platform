@@ -252,6 +252,14 @@
         where id = #{id}
     </update>
 
+    <update id="batchSendGoods">
+        update nideshop_order set shipping_status=1  where shipping_status=0 and pay_time like concat(#{date},'%')
+    </update>
+
+    <update id="batchConfirm">
+        update nideshop_order set shipping_status=2  where shipping_status=1 and pay_time like concat(#{date},'%')
+    </update>
+
     <delete id="delete">
 		delete from nideshop_order where id = #{value}
 	</delete>

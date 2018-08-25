@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,6 +87,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public int batchConfirm() {
+        int count =  orderDao.batchConfirm(getYesterday());
+        if (count <= 0) {
+            throw new RRException("请先发货或已发货或今日无订单");
+        }
+        return count;
+    }
+
+    @Override
     public int sendGoods(OrderEntity order) {
         Integer payStatus = order.getPayStatus();//付款状态
         if (2 != payStatus) {
@@ -96,6 +109,15 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderStatus(300);//订单已发货
         order.setShippingStatus(1);//已发货
         return orderDao.update(order);
+    }
+
+    @Override
+    public int batchSendGoods() {
+        int count = orderDao.batchSendGoods(getYesterday());
+        if (count <= 0) {
+            throw new  RRException("今日无订单或已经发货");
+        }
+        return count;
     }
 
     @Override
@@ -149,5 +171,14 @@ public class OrderServiceImpl implements OrderService {
             results.add(result);
         }
         return results;
+    }
+
+    private String getYesterday() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Period period = Period.of(0,0, 1);
+        localDateTime = localDateTime.minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String date = formatter.format(localDateTime);
+        return date;
     }
 }

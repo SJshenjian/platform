@@ -124,29 +124,23 @@ public class OrderController {
     }
 
     /**
-     * 确定收货
-     *
-     * @param id
-     * @return
+     * 一键确定收货(针对当日订单)
      */
-    @RequestMapping("/confirm")
-    @RequiresPermissions("order:confirm")
-    public R confirm(@RequestBody Integer id) {
-        orderService.confirm(id);
+    @RequestMapping("/batchConfirm")
+    @RequiresPermissions("order:batchConfirm")
+    public R batchConfirm() {
+        orderService.batchConfirm();
 
         return R.ok();
     }
 
     /**
-     * 发货
-     *
-     * @param order
-     * @return
+     * 一键发货(针对当日订单)
      */
-    @RequestMapping("/sendGoods")
-    @RequiresPermissions("order:sendGoods")
-    public R sendGoods(@RequestBody OrderEntity order) {
-        orderService.sendGoods(order);
+    @RequestMapping("/batchSendGoods")
+    @RequiresPermissions("order:batchSendGoods")
+    public R batchSendGoods() {
+        orderService.batchSendGoods();
 
         return R.ok();
     }

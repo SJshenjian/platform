@@ -26,15 +26,13 @@ public interface OrderService {
 
     int deleteBatch(Integer[] ids);
 
-    /**
-     * 确定收货
-     *
-     * @param id
-     * @return
-     */
     int confirm(Integer id);
 
+    int batchConfirm();
+
     int sendGoods(OrderEntity order);
+
+    int batchSendGoods();
 
     List<Object> listOrder(String date);
 }

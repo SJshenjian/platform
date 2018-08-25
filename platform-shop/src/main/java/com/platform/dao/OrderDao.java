@@ -15,4 +15,8 @@ public interface OrderDao extends BaseDao<OrderEntity> {
 
     // 查询网点的出库清单
     List<OrderEntity> listOrder(@Param("address") String address, @Param("date") String date);
+
+    int batchSendGoods(@Param("date") String date);
+
+    int batchConfirm(@Param("date") String date);
 }
