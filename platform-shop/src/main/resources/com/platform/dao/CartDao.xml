@@ -104,6 +104,16 @@
         where id = #{id}
     </update>
 
+    <update id="updateCartByGoodsID" parameterType="com.platform.entity.CartEntity">
+        update
+          nideshop_cart
+        <set>
+            <if test="marketPrice != null">`market_price` = #{marketPrice},</if>
+            <if test="retailPrice != null">`retail_price` = #{retailPrice}</if>
+        </set>
+        where `goods_id` = #{goodsId}
+    </update>
+
     <delete id="delete">
 		delete from nideshop_cart where id = #{value}
 	</delete>

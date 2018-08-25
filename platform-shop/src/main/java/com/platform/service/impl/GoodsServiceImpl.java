@@ -1,15 +1,8 @@
 package com.platform.service.impl;
 
 import com.platform.annotation.DataFilter;
-import com.platform.dao.GoodsAttributeDao;
-import com.platform.dao.GoodsDao;
-import com.platform.dao.GoodsGalleryDao;
-import com.platform.dao.ProductDao;
-import com.platform.entity.GoodsGalleryEntity;
-import com.platform.entity.GoodsAttributeEntity;
-import com.platform.entity.GoodsEntity;
-import com.platform.entity.ProductEntity;
-import com.platform.entity.SysUserEntity;
+import com.platform.dao.*;
+import com.platform.entity.*;
 import com.platform.service.GoodsService;
 import com.platform.utils.RRException;
 import com.platform.utils.ShiroUtils;
@@ -39,6 +32,8 @@ public class GoodsServiceImpl implements GoodsService {
     private ProductDao productDao;
     @Autowired
     private GoodsGalleryDao goodsGalleryDao;
+    @Autowired
+    private CartDao cartDao;
 
     @Override
     public GoodsEntity queryObject(Integer id) {
@@ -123,6 +118,13 @@ public class GoodsServiceImpl implements GoodsService {
         productEntity.setMarketPrice(goods.getMarketPrice());
         productEntity.setGoodsSpecificationIds("");
         productDao.updateByGoodsId(productEntity);
+
+        //修改用户购物车中商品价格等相关信息
+        CartEntity cartEntity = new CartEntity();
+        cartEntity.setGoodsId(goods.getId());
+        cartEntity.setRetailPrice(goods.getRetailPrice());
+        cartEntity.setMarketPrice(goods.getMarketPrice());
+        cartDao.updateCartByGoodsID(cartEntity);
 
         List<GoodsAttributeEntity> attributeEntityList = goods.getAttributeEntityList();
         if (null != attributeEntityList && attributeEntityList.size() > 0) {
